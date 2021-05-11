@@ -3,13 +3,26 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const morgan = require("morgan");
+const mongoose = require("mongoose");
 require("dotenv").config(); // loads environment variables
 
 // environment variables
 const PORT = process.env.PORT || 8000;
+const DB = process.env.MONGO_ATLAS_URI;
 
 // application initialization
 const app = express();
+
+// database
+mongoose
+  .connect(DB, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+  })
+  .then(() => {
+    console.log("Connected to MongoDB Atlas");
+  });
 
 // middleware
 app.use(morgan("dev")); // provides server information to the console
