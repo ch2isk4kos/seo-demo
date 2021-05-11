@@ -6,6 +6,9 @@ const morgan = require("morgan");
 const mongoose = require("mongoose");
 require("dotenv").config(); // loads environment variables
 
+// import routes
+const blogRoutes = require("./routes/blog");
+
 // environment variables
 const PORT = process.env.PORT || 8000;
 const DB = process.env.MONGO_ATLAS_URI;
@@ -28,6 +31,7 @@ mongoose
 app.use(morgan("dev")); // provides server information to the console
 app.use(bodyParser.json());
 app.use(cookieParser());
+app.use(blogRoutes);
 
 // whitelist requests from client side *** browser to browser communication ***
 if (process.env.NODE_ENV === "development") {
