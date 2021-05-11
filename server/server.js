@@ -15,9 +15,14 @@ const app = express();
 app.use(morgan("dev")); // provides server information to the console
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.use(cors());
+
+// whitelist requests from client side
+if (process.env.NODE_ENV === "development") {
+  app.use(cors({ origin: `${process.env.CLIENT_URL}` }));
+}
 
 // routes
+
 app.get("/api", (req, res) => {
   res.json({ time: Date().toString() });
 });
