@@ -4,3 +4,6 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const morgan = require("morgan");
 require("dotenv").config(); // loads environment variables
+
+// application initialization
+const app = express();
