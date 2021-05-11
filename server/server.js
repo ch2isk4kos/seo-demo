@@ -18,10 +18,11 @@ app.use(cookieParser());
 app.use(cors());
 
 // routes
-app.get("/api", (res, req) => {
-  res.json({ time: Date.now().toString() });
+app.get("/api", (req, res) => {
+  res.json({ time: Date().toString() });
 });
 
+// listens for `npm start`
 app.listen(PORT, () => {
   console.log(`Express listening on ${PORT}`);
 });
