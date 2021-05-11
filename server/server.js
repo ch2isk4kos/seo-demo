@@ -16,7 +16,7 @@ app.use(morgan("dev")); // provides server information to the console
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-// whitelist requests from client side
+// whitelist requests from client side *** browser to browser communication ***
 if (process.env.NODE_ENV === "development") {
   app.use(cors({ origin: `${process.env.CLIENT_URL}` }));
 }
