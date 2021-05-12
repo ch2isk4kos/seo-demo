@@ -8,6 +8,7 @@ require("dotenv").config(); // loads environment variables
 
 // import routes
 const blogRoutes = require("./routes/blog");
+const authRoutes = require("./routes/auth");
 
 // environment variables
 const PORT = process.env.PORT || 8000;
@@ -32,6 +33,7 @@ app.use(morgan("dev")); // provides server information to the console
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use("/api", blogRoutes);
+app.use("/api", authRoutes);
 
 // whitelist requests from client side *** browser to browser communication ***
 if (process.env.NODE_ENV === "development") {
