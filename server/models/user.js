@@ -60,7 +60,7 @@ userSchema
     // create tempory password variable
     this._password = password;
     // generate salt
-    this.salt = this.makeSalt();
+    this.salt = this.generateSalt();
     // encrypt password
     this.hashed_password = this.ecryptPassword(password);
   })
@@ -71,7 +71,7 @@ userSchema
 // user schmea methods
 userSchema.methods = {
   authenticateUser: function (string) {
-    return this.encryptPassword(string);
+    return this.encryptPassword(string) || this.hashed_password;
   },
   encryptPassword: function (password) {
     if (!password) return "";
@@ -84,8 +84,8 @@ userSchema.methods = {
       return `${err}`;
     }
   },
-  makeSalt: function () {
-    return Math.round(new Date().valueOf() * Math.random() + "");
+  generateSalt: function () {
+    return Math.round(new Date().valueOf() * Math.random()) + "";
   },
 };
 
