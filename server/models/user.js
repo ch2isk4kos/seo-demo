@@ -53,4 +53,19 @@ const userSchema = new mongoose.Model(
   { timeStamp: true }
 );
 
+// virtual fields
+userSchema
+  .virtual("password")
+  .set(function (password) {
+    // create tempory password variable
+    this._password = password;
+    // generate salt
+    this.salt = this.makeSalt();
+    // encrypt password
+    this.hashed_password = this.ecryptPassword(password);
+  })
+  .get(function () {
+    return this._password;
+  });
+
 module.exports = mongoose.model("User", userSchema);
