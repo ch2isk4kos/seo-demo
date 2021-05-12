@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const crypto = require("crypto");
 
-const userSchema = new mongoose.Model(
+const userSchema = new mongoose.Schema(
   {
     username: {
       type: String,
@@ -15,13 +15,14 @@ const userSchema = new mongoose.Model(
     name: {
       type: String,
       trim: true,
+      required: true,
       max: 32,
     },
     email: {
       type: String,
       trim: true,
       lowercase: true,
-      // index: true,
+      index: true,
       unique: true,
       required: true,
     },
@@ -50,7 +51,7 @@ const userSchema = new mongoose.Model(
       default: "",
     },
   },
-  { timeStamp: true }
+  { timestamp: true }
 );
 
 // virtual fields
