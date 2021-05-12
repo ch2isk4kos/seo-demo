@@ -68,4 +68,25 @@ userSchema
     return this._password;
   });
 
+// user schmea methods
+userSchema.methods = {
+  authenticateUser: function (string) {
+    return this.encryptPassword(string);
+  },
+  encryptPassword: function (password) {
+    if (!password) return "";
+    try {
+      return crypto
+        .createHmac("sha1", this.salt)
+        .update(password)
+        .digest("hex");
+    } catch (err) {
+      return `${err}`;
+    }
+  },
+  makeSalt: function () {
+    return Math.round(new Date().valueOf() * Math.random() + "");
+  },
+};
+
 module.exports = mongoose.model("User", userSchema);
