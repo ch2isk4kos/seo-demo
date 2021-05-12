@@ -4,8 +4,12 @@ const { signup } = require("../controllers/auth.js");
 
 // validators
 const { runValidation } = require("../validators/index");
-const { userSignupValidation } = require("../validators/auth");
+const {
+  userSignupValidation,
+  userSigninValidation,
+} = require("../validators/auth");
 
 router.post("/signup", userSignupValidation, runValidation, signup);
+router.post("/signin", userSigninValidation, runValidation, signin);
 
 module.exports = router;
