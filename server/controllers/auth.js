@@ -64,3 +64,8 @@ exports.signout = (req, res) => {
     message: "Signout Succesful",
   });
 };
+
+exports.requireSignin = expressJwt({
+  secret: process.env.JWT_SECRET,
+  algorithms: ["HS256"],
+});
