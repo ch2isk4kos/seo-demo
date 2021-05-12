@@ -63,7 +63,7 @@ userSchema
     // generate salt
     this.salt = this.generateSalt();
     // encrypt password
-    this.hashed_password = this.ecryptPassword(password);
+    this.hashed_password = this.encryptPassword(password);
   })
   .get(function () {
     return this._password;
@@ -82,7 +82,7 @@ userSchema.methods = {
         .update(password)
         .digest("hex");
     } catch (err) {
-      return `${err}`;
+      return "";
     }
   },
   generateSalt: function () {
