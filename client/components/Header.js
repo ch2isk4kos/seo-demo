@@ -24,22 +24,19 @@ const Header = (props) => {
   return (
     <div>
       <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">{APP_NAME}</NavbarBrand>
+        <Link href="/">{APP_NAME}</Link>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
-            <NavItem>
-              <Link href="/signup">
-                <NavLink>SignUp</NavLink>
-              </Link>
-            </NavItem>
             <NavItem>
               <Link href="/signin">
                 <NavLink>Sign In</NavLink>
               </Link>
             </NavItem>
             <NavItem>
-              <NavLink href="https://github.com/ch2isk4kos">GitHub</NavLink>
+              <Link href="/signup">
+                <NavLink>SignUp</NavLink>
+              </Link>
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
