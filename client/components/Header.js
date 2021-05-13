@@ -24,10 +24,13 @@ const Header = (props) => {
   return (
     <div>
       <Navbar color="light" light expand="md">
-        <Link href="/">{APP_NAME}</Link>
+        <Link href="/">
+          <NavLink className="font-weight-bold">{APP_NAME}</NavLink>
+        </Link>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
+          <Nav className="ml-auto" navbar>
+            {/* <Nav className="mr-auto" navbar> */}
             <NavItem>
               <Link href="/signin">
                 <NavLink>Sign In</NavLink>
@@ -50,7 +53,7 @@ const Header = (props) => {
               </DropdownMenu>
             </UncontrolledDropdown>
           </Nav>
-          <NavbarText>ch2isk4kos</NavbarText>
+          {/* <NavbarText>ch2isk4kos</NavbarText> */}
         </Collapse>
       </Navbar>
     </div>
