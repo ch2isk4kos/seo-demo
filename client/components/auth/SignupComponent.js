@@ -11,6 +11,16 @@ const SignupComponent = () => {
     showForm: true,
   });
 
+  const {
+    name,
+    email,
+    password,
+    error,
+    isLoading,
+    message,
+    showForm,
+  } = formData;
+
   const handleOnChange = (e) => {
     console.log(e.target.value);
   };
