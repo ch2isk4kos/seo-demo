@@ -1,6 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 
 const SignupComponent = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    error: "",
+    isLoading: false,
+    message: "",
+    showForm: true,
+  });
+
   const handleOnChange = (e) => {
     console.log(e.target.value);
   };
@@ -43,6 +53,7 @@ const SignupComponent = () => {
       </form>
     );
   };
+
   return (
     <>
       <h2>Sign Up Component</h2>
