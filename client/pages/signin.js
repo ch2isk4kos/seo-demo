@@ -1,9 +1,13 @@
 import Layout from "../components/Layout";
+import Link from "next/link";
 
 const Signin = () => {
   return (
     <Layout>
-      <h2>Signin.</h2>
+      <h2>Sign In.</h2>
+      <Link href="/">
+        <a>Home</a>
+      </Link>
     </Layout>
   );
 };
