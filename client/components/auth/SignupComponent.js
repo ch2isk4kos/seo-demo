@@ -21,8 +21,9 @@ const SignupComponent = () => {
     showForm,
   } = formData;
 
-  const handleOnChange = (e) => {
+  const handleOnChange = (name) => (e) => {
     console.log(e.target.value);
+    setFormData({ ...formData, error: false, [name]: e.target.value });
   };
 
   const handleOnSubmit = (e) => {
@@ -38,7 +39,8 @@ const SignupComponent = () => {
             className="form-control"
             type="text"
             placeholder="type your name"
-            onChange={handleOnChange}
+            value={name}
+            onChange={handleOnChange("name")}
           />
         </div>
         <div className="form-group">
@@ -46,7 +48,8 @@ const SignupComponent = () => {
             className="form-control"
             type="email"
             placeholder="type your email"
-            onChange={handleOnChange}
+            value={email}
+            onChange={handleOnChange("email")}
           />
         </div>
         <div className="form-group">
@@ -54,7 +57,8 @@ const SignupComponent = () => {
             className="form-control"
             type="password"
             placeholder="enter a password"
-            onChange={handleOnChange}
+            value={password}
+            onChange={handleOnChange("password")}
           />
         </div>
         <div>
