@@ -29,6 +29,15 @@ const SignupComponent = () => {
   const handleOnSubmit = (e) => {
     e.preventDefault();
     console.log("handle on submit clicked");
+    console.table({
+      name,
+      email,
+      password,
+      error,
+      isLoading,
+      message,
+      showForm,
+    });
   };
 
   const signupForm = () => {
