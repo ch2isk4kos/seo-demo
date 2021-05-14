@@ -58,5 +58,16 @@ export const removeCookie = (key) => {
   }
 };
 
-export const localStorageContainer = () => {};
+export const setLocalStorage = (key, value) => {
+  if (process.browser) {
+    localstorage.setItem(key, JSON.stringify(value));
+  }
+};
+
+export const removeLocalStorage = (key, value) => {
+  if (process.browser) {
+    localstorage.removeItem(key);
+  }
+};
+
 export const authenticateUser = () => {};
