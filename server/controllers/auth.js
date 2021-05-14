@@ -21,6 +21,7 @@ exports.signup = (req, res) => {
           error: err,
         });
       }
+      console.log("user:", newUser);
       // res.json({
       //   user: success,
       // });
