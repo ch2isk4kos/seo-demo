@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Router from "next/router";
-import { signin, authenticateUser, isAuth } from "../../actions/auth";
+import { signin, authenticateUser } from "../../actions/auth";
 
 const SigninComponent = () => {
   const [formData, setFormData] = useState({
@@ -46,8 +46,9 @@ const SigninComponent = () => {
         // save user info to localstorage
 
         // authenticate user
-
-        Router.push("/");
+        authenticateUser(data, () => {
+          Router.push("/");
+        });
       }
     });
   };
