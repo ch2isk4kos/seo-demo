@@ -34,3 +34,23 @@ export const signin = (user) => {
       console.log(err);
     });
 };
+
+export const setCookie = (key, value) => {
+  if (process.browser) {
+    cookie.set(key, value, {
+      expires: 1,
+    });
+  }
+};
+
+export const deleteCookie = (key) => {
+  if (process.browser) {
+    cookie.remove(key, {
+      expires: 1,
+    });
+  }
+};
+
+export const getCookie = () => {};
+export const localStorageContainer = () => {};
+export const authenticateUser = () => {};
