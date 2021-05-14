@@ -14,6 +14,10 @@ const SigninComponent = () => {
 
   const { email, password, error, isLoading, message, showForm } = formData;
 
+  useEffect(() => {
+    isAuth() && Router.push("/");
+  }, []);
+
   const handleOnChange = (name) => (e) => {
     console.log(e.target.value);
     setFormData({ ...formData, error: false, [name]: e.target.value });
