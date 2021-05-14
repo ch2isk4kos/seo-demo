@@ -60,13 +60,13 @@ export const removeCookie = (key) => {
 
 export const setLocalStorage = (key, value) => {
   if (process.browser) {
-    localstorage.setItem(key, JSON.stringify(value));
+    localStorage.setItem(key, JSON.stringify(value));
   }
 };
 
 export const removeLocalStorage = (key, value) => {
   if (process.browser) {
-    localstorage.removeItem(key);
+    localStorage.removeItem(key);
   }
 };
 
@@ -80,8 +80,8 @@ export const isAuth = () => {
   if (process.browser) {
     const checkCookie = getCookie("token");
     if (checkCookie) {
-      if (localstorage.getItem("user")) {
-        return JSON.parse(localstorage.getItem("user"));
+      if (localStorage.getItem("user")) {
+        return JSON.parse(localStorage.getItem("user"));
       } else {
         return false;
       }
