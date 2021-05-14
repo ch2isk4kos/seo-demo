@@ -95,7 +95,7 @@ const SignupComponent = () => {
           />
         </div>
         <div>
-          <button className="btn btn-primary">Submit</button>
+          <button className="btn btn-primary">Signup</button>
         </div>
       </form>
     );
