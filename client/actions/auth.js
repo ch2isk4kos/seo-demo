@@ -1,4 +1,5 @@
 import fetch from "isomorphic-fetch";
+import cookie from "js-cookie";
 import { API } from "../config";
 
 export const signup = (user) => {
@@ -45,11 +46,11 @@ export const setCookie = (key, value) => {
 
 export const getCookie = (key) => {
   if (process.browser) {
-    cookie.get(key);
+    cookie.get(key); // `key` is the token
   }
 };
 
-export const deleteCookie = (key) => {
+export const removeCookie = (key) => {
   if (process.browser) {
     cookie.remove(key, {
       expires: 1,
