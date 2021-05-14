@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Router from "next/router";
-import { signin, authenticateUser } from "../../actions/auth";
+import { signin, authenticateUser, isAuth } from "../../actions/auth";
 
 const SigninComponent = () => {
   const [formData, setFormData] = useState({
