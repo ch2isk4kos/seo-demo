@@ -29,25 +29,38 @@ const SignupComponent = () => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    console.log("handle on submit clicked");
-    console.table({
-      name,
-      email,
-      password,
-      error,
-      isLoading,
-      message,
-      showForm,
-    });
+    // console.log("handle on submit clicked");
+    // console.table({
+    //   name,
+    //   email,
+    //   password,
+    //   error,
+    //   isLoading,
+    //   message,
+    //   showForm,
+    // });
 
-    setFormData({
-      name: "",
-      email: "",
-      password: "",
-      error: "",
-      isLoading: false,
-      message: "",
-      showForm: true,
+    // set values in state
+    setFormData({ ...formData, isLoading: true, error: false });
+
+    // create new user
+    const user = { name, email, password };
+    console.log(user);
+    signup(user).then((data) => {
+      if (data.error) {
+        setFormData({ ...formData, error: data.error, isLoading: false });
+      } else {
+        setFormData({
+          ...formData,
+          name: "",
+          email: "",
+          password: "",
+          error: "",
+          isLoading: false,
+          message: data.message,
+          showForm: false,
+        });
+      }
     });
   };
 
