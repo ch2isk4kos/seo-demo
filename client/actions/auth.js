@@ -70,4 +70,8 @@ export const removeLocalStorage = (key, value) => {
   }
 };
 
-export const authenticateUser = () => {};
+export const authenticateUser = (data, next) => {
+  setCookie("token", data.token);
+  setLocalStorage("user", data.user);
+  next();
+};
