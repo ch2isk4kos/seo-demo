@@ -43,6 +43,12 @@ export const setCookie = (key, value) => {
   }
 };
 
+export const getCookie = (key) => {
+  if (process.browser) {
+    cookie.get(key);
+  }
+};
+
 export const deleteCookie = (key) => {
   if (process.browser) {
     cookie.remove(key, {
@@ -51,6 +57,5 @@ export const deleteCookie = (key) => {
   }
 };
 
-export const getCookie = () => {};
 export const localStorageContainer = () => {};
 export const authenticateUser = () => {};
