@@ -38,6 +38,16 @@ const SignupComponent = () => {
       message,
       showForm,
     });
+
+    setFormData({
+      name: "",
+      email: "",
+      password: "",
+      error: "",
+      isLoading: false,
+      message: "",
+      showForm: true,
+    });
   };
 
   const signupForm = () => {
