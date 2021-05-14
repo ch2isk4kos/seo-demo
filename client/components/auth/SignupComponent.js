@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { signup } from "../../actions/auth";
+import React, { useState, useEffect } from "react";
+import { signup, isAuth } from "../../actions/auth";
 
 const SignupComponent = () => {
   const [formData, setFormData] = useState({
@@ -21,6 +21,10 @@ const SignupComponent = () => {
     message,
     showForm,
   } = formData;
+
+  useEffect(() => {
+    isAuth() && Router.push("/");
+  }, []);
 
   const handleOnChange = (name) => (e) => {
     console.log(e.target.value);
