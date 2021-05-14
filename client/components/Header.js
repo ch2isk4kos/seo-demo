@@ -46,7 +46,12 @@ const Header = (props) => {
 
             {isAuth() && (
               <Link href="/signin">
-                <NavLink onClick={() => signout()}>Signout</NavLink>
+                <NavLink
+                  style={{ cursor: "pointer" }}
+                  onClick={() => signout()}
+                >
+                  Signout
+                </NavLink>
               </Link>
             )}
 
