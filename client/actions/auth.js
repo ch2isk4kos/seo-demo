@@ -75,3 +75,16 @@ export const authenticateUser = (data, next) => {
   setLocalStorage("user", data.user);
   next();
 };
+
+export const isAuth = () => {
+  if (process.browser) {
+    const checkCookie = getCookie("token");
+    if (checkCookie) {
+      if (localstorage.getItem("user")) {
+        return JSON.parse(localstorage.getItem("user"));
+      } else {
+        return false;
+      }
+    }
+  }
+};
