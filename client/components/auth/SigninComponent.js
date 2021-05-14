@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Router from "next/router";
-import { signin } from "../../actions/auth";
+import { signin, authenticateUser, isAuth } from "../../actions/auth";
 
 const SigninComponent = () => {
   const [formData, setFormData] = useState({
@@ -41,15 +41,11 @@ const SigninComponent = () => {
       if (data.error) {
         setFormData({ ...formData, error: data.error, isLoading: false });
       } else {
-        // setFormData({
-        //   ...formData,
-        //   email: "",
-        //   password: "",
-        //   error: "",
-        //   isLoading: false,
-        //   message: data.message,
-        //   showForm: false,
-        // });
+        // save user token to cookie
+
+        // save user info to localstorage
+
+        // authenticate user
 
         Router.push("/");
       }
