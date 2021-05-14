@@ -63,7 +63,7 @@ export const setCookie = (key, value) => {
 
 export const getCookie = (key) => {
   if (process.browser) {
-    cookie.get(key); // `key` is the token
+    return cookie.get(key); // `key` is the token
   }
 };
 
