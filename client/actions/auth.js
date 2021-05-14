@@ -1,5 +1,6 @@
 import fetch from "isomorphic-fetch";
 import cookie from "js-cookie";
+import next from "next";
 import { API } from "../config";
 
 export const signup = (user) => {
@@ -30,6 +31,22 @@ export const signin = (user) => {
   })
     .then((res) => {
       return res.json();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+export const signout = (user) => {
+  removeCookie("token");
+  removeLocalStorage("token");
+  next();
+
+  return fetch(`${API}/api/signout`, {
+    method: "GET",
+  })
+    .then((res) => {
+      return console.log("Signout Successful");
     })
     .catch((err) => {
       console.log(err);
