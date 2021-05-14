@@ -29,17 +29,23 @@ mongoose
     console.log("Connected to MongoDB Atlas");
   });
 
+// whitelist requests from client side *** browser to browser communication ***
+// if (process.env.NODE_ENV === "development") {
+//   app.use(cors({ origin: `${process.env.CLIENT_URL}` }));
+// }
+
+// bug fix:
+// error -> Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.
+// commented the above and applied the following two lines:
+app.use(cors());
+app.options(`${process.env.CLIENT_URL}`, cors());
+
 // middleware
 app.use(morgan("dev")); // provides server information to the console
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use("/api", blogRoutes);
 app.use("/api", authRoutes);
-
-// whitelist requests from client side *** browser to browser communication ***
-if (process.env.NODE_ENV === "development") {
-  app.use(cors({ origin: `${process.env.CLIENT_URL}` }));
-}
 
 // listens for `npm start`
 app.listen(PORT, () => {
