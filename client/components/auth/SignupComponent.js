@@ -101,10 +101,28 @@ const SignupComponent = () => {
     );
   };
 
+  const renderLoading = () =>
+    isLoading ? (
+      <div className="alert alert-info">
+        <h2>Loading...</h2>
+      </div>
+    ) : (
+      ""
+    );
+
+  const renderError = () =>
+    error ? <div className="alert alert-danger">{error}</div> : "";
+
+  const renderMessage = () =>
+    message ? <div className="alert alert-info">{message}</div> : "";
+
   return (
     <>
       <h2>Sign Up Component</h2>
-      {signupForm()}
+      {renderLoading()}
+      {renderError()}
+      {renderMessage()}
+      {showForm && signupForm()}
     </>
   );
 };
