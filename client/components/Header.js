@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { APP_NAME } from "../config";
 import Link from "next/link";
+import { APP_NAME } from "../config";
+import { signout, isAuth } from "../actions/auth";
 import {
   Collapse,
   Navbar,
