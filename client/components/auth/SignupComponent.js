@@ -29,16 +29,16 @@ const SignupComponent = () => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    // console.log("handle on submit clicked");
-    // console.table({
-    //   name,
-    //   email,
-    //   password,
-    //   error,
-    //   isLoading,
-    //   message,
-    //   showForm,
-    // });
+
+    console.table({
+      name,
+      email,
+      password,
+      error,
+      isLoading,
+      message,
+      showForm,
+    });
 
     // set values in state
     setFormData({ ...formData, isLoading: true, error: false });
