@@ -1,9 +1,9 @@
 import React, { useState } from "react";
+import Router from "next/router";
 import { signin } from "../../actions/auth";
 
 const SigninComponent = () => {
   const [formData, setFormData] = useState({
-    name: "",
     email: "",
     password: "",
     error: "",
@@ -12,15 +12,7 @@ const SigninComponent = () => {
     showForm: true,
   });
 
-  const {
-    name,
-    email,
-    password,
-    error,
-    isLoading,
-    message,
-    showForm,
-  } = formData;
+  const { email, password, error, isLoading, message, showForm } = formData;
 
   const handleOnChange = (name) => (e) => {
     console.log(e.target.value);
@@ -31,7 +23,6 @@ const SigninComponent = () => {
     e.preventDefault();
 
     console.table({
-      name,
       email,
       password,
       error,
@@ -44,22 +35,23 @@ const SigninComponent = () => {
     setFormData({ ...formData, isLoading: true, error: false });
 
     // create new user
-    const user = { name, email, password };
+    const user = { email, password };
     console.log(user);
     signin(user).then((data) => {
       if (data.error) {
         setFormData({ ...formData, error: data.error, isLoading: false });
       } else {
-        setFormData({
-          ...formData,
-          name: "",
-          email: "",
-          password: "",
-          error: "",
-          isLoading: false,
-          message: data.message,
-          showForm: false,
-        });
+        // setFormData({
+        //   ...formData,
+        //   email: "",
+        //   password: "",
+        //   error: "",
+        //   isLoading: false,
+        //   message: data.message,
+        //   showForm: false,
+        // });
+
+        Router.push("/");
       }
     });
   };
@@ -70,17 +62,8 @@ const SigninComponent = () => {
         <div className="form-group">
           <input
             className="form-control"
-            type="text"
-            placeholder="type your name"
-            value={name}
-            onChange={handleOnChange("name")}
-          />
-        </div>
-        <div className="form-group">
-          <input
-            className="form-control"
             type="email"
-            placeholder="type your email"
+            placeholder="your@email.com"
             value={email}
             onChange={handleOnChange("email")}
           />
@@ -89,13 +72,13 @@ const SigninComponent = () => {
           <input
             className="form-control"
             type="password"
-            placeholder="enter a password"
+            placeholder="*******"
             value={password}
             onChange={handleOnChange("password")}
           />
         </div>
         <div>
-          <button className="btn btn-primary">Submit</button>
+          <button className="btn btn-primary">submit</button>
         </div>
       </form>
     );
