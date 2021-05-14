@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
+// import { Router } from "next/router";
 import { APP_NAME } from "../config";
 import { signout, isAuth } from "../actions/auth";
 import {
@@ -42,6 +43,13 @@ const Header = (props) => {
                 <NavLink>SignUp</NavLink>
               </Link>
             </NavItem>
+
+            {isAuth() && (
+              <Link href="/signin">
+                <NavLink onClick={() => signout()}>Signout</NavLink>
+              </Link>
+            )}
+
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
                 Options
