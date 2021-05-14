@@ -5,4 +5,4 @@ node_modules
 # Files
 .env
 next.config.js
-config.js
+# config.js
