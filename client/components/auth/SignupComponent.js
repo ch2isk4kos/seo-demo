@@ -118,7 +118,6 @@ const SignupComponent = () => {
 
   return (
     <>
-      <h2>Sign Up Component</h2>
       {renderLoading()}
       {renderError()}
       {renderMessage()}
