@@ -5,10 +5,18 @@ import Link from "next/link";
 const Signup = () => {
   return (
     <Layout>
-      <SignupComponent />
-      <Link href="/">
-        <a>Home</a>
-      </Link>
+      <div className="row">
+        <div className="col-md-8 offset-md-2">
+          <SignupComponent />
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-md-8 offset-md-2 mt-2">
+          <Link href="/">
+            <a>Home</a>
+          </Link>
+        </div>
+      </div>
     </Layout>
   );
 };
